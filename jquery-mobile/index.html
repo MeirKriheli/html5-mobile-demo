@@ -39,7 +39,7 @@
 	</div><!-- /header -->
 	<div data-role="content" id="main-no-user">	
         <p>Please enter a github username</p>
-        <form action="#main" method="post" data-ajax="false"> 
+        <form id="user-form" action="#main" method="post" data-ajax="false"> 
             <div data-role="fieldcontain">
                 <label for="name">Username:</label>
                 <input type="text" name="name" id="name" value=""  />
@@ -50,10 +50,17 @@
 </div><!-- /select user -->
 <script>
     (function($) {
-        var username = null;
+        var username = null, old_username = null;
 
         $('#main').live('pageinit', function(event){
+            alert(username);
         });
+
+        $('#user-form').submit(function() {
+            username = $('#name').val();
+            $.mobile.changePage( $("#main"), { transition: "slideup"} );	
+            return false;
+        });;
     })(jQuery);
 </script>
 </body>
