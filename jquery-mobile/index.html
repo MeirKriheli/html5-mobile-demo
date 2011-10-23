@@ -30,17 +30,24 @@
 </div><!-- /main page -->
 
 
-<!-- Start of second page: #two -->
+<!-- Start of second page: #select-user -->
 <div data-role="page" id="select-user">
 
 	<div data-role="header">
 		<h1>Select user</h1>
         <a href="#main" data-icon="back" data-rel="back">Back</a>
 	</div><!-- /header -->
-
-	<div data-role="content">	
-	</div><!-- /content -->
-</div><!-- /page two -->
+	<div data-role="content" id="main-no-user">	
+        <p>Please enter a github username</p>
+        <form action="#main" method="post" data-ajax="false"> 
+            <div data-role="fieldcontain">
+                <label for="name">Username:</label>
+                <input type="text" name="name" id="name" value=""  />
+            </div>	
+            <button type="submit" data-theme="b" name="submit" value="submit-value">Submit</button>
+        </form> 
+    </div>
+</div><!-- /select user -->
 <script>
     (function($) {
         var username = null;
