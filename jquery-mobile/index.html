@@ -14,7 +14,7 @@
 <div data-role="page" id="main">
 
     <div data-role="header" data-position="fixed">
-        <h1>GitHub Viewer</h1>
+        <h1>GitHub</h1>
         <a href="#select-user" data-icon="gear" data-theme="b">Select user</a>
     </div>
 
@@ -25,8 +25,8 @@
 		<p><a href="#select-user" data-role="button">Select GitHub user</a></p>	
 	</div><!-- /content -->
 
-    <div data-role="content">
-    </div>
+    <ul data-role="listview" id="repo-data">
+    </ul>
 </div><!-- /main page -->
 
 
@@ -50,10 +50,14 @@
 </div><!-- /select user -->
 <script>
     (function($) {
-        var username = null, old_username = null;
+        var username = null, old_username = null, repos = null;
 
-        $('#main').live('pageinit', function(event){
-            alert(username);
+        $('#main').live('pageshow', function(event, ui){
+            if (username !== null && old_username != username) {
+                old_username = username;
+                $('#main-no-user').hide();
+                load_repos(username);
+            }
         });
 
         $('#user-form').submit(function() {
@@ -61,6 +65,28 @@
             $.mobile.changePage( $("#main"), { transition: "slideup"} );	
             return false;
         });;
+
+        function load_repos(username) {
+            $.mobile.showPageLoadingMsg();
+            $.ajax({
+                url: 'https://api.github.com/users/'  + escape(username) + '/repos',
+                dataType: 'jsonp',
+                success: function(data) {
+                    var repo_data = $('#repo-data').empty();
+                    $.mobile.hidePageLoadingMsg();
+                    $.each(data.data, function(idx, repo) {
+                        // uri escape, but good enough for us
+                        $('<li><h3>' + escape(repo.name) + '</h3><p>' + repo.description
+                        + '</p><p class="ui-li-aside">Pushed at: <strong>' + repo.pushed_at
+                        + '</strong></p><span class="ui-li-count">' + repo.open_issues 
+                        + ' issues</span></li>').appendTo(repo_data);
+                    });
+                    repo_data.listview('refresh');
+                }
+            });
+        }
+
+
     })(jQuery);
 </script>
 </body>
