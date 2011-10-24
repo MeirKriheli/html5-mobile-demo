@@ -1,15 +1,15 @@
-<!DOCTYPE html> 
-<html> 
-	<head> 
-	<title>Git Hub repos</title> 
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Git Hub repos</title>
 
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.css" />
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
-</head> 
-<body> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="../lib/jquery-mobile/jquery.mobile-1.0rc2.min.css" />
+	<script type="text/javascript" src="../lib/jquery/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="../lib/jquery-mobile/jquery.mobile-1.0rc2.min.js"></script>
+</head>
+<body>
 
 <div data-role="page" id="main">
 
@@ -18,11 +18,11 @@
         <a href="#select-user" data-icon="gear" data-theme="b">Select user</a>
     </div>
 
-	<div data-role="content" id="main-no-user">	
+	<div data-role="content" id="main-no-user">
 		<h2>GitHub Repo viewer</h2>
-		
+
         <p>No user specified</p>
-		<p><a href="#select-user" data-role="button">Select GitHub user</a></p>	
+		<p><a href="#select-user" data-role="button">Select GitHub user</a></p>
 	</div><!-- /content -->
 
     <ul data-role="listview" id="repo-data">
@@ -37,15 +37,15 @@
 		<h1>Select user</h1>
         <a href="#main" data-icon="back" data-rel="back">Back</a>
 	</div><!-- /header -->
-	<div data-role="content" id="main-no-user">	
+	<div data-role="content" id="main-no-user">
         <p>Please enter a github username</p>
-        <form id="user-form" action="#main" method="post" data-ajax="false"> 
+        <form id="user-form" action="#main" method="post" data-ajax="false">
             <div data-role="fieldcontain">
                 <label for="name">Username:</label>
                 <input type="text" name="name" id="name" value=""  />
-            </div>	
+            </div>
             <button type="submit" data-theme="b" name="submit" value="submit-value">Submit</button>
-        </form> 
+        </form>
     </div>
 </div><!-- /select user -->
 <script>
@@ -62,7 +62,7 @@
 
         $('#user-form').submit(function() {
             username = $('#name').val();
-            $.mobile.changePage( $("#main"), { transition: "slideup"} );	
+            $.mobile.changePage( $("#main"), { transition: "slideup"} );
             return false;
         });;
 
@@ -78,7 +78,7 @@
                         // uri escape, but good enough for us
                         $('<li><h3>' + escape(repo.name) + '</h3><p>' + repo.description
                         + '</p><p class="ui-li-aside">Pushed at: <strong>' + repo.pushed_at
-                        + '</strong></p><span class="ui-li-count">' + repo.open_issues 
+                        + '</strong></p><span class="ui-li-count">' + repo.open_issues
                         + ' issues</span></li>').appendTo(repo_data);
                     });
                     repo_data.listview('refresh');
