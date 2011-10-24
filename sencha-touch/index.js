@@ -1,4 +1,4 @@
-/*(function(Ext) {*/
+(function(Ext) {
     var username = null;
 
     Ext.regModel('Repo', {
@@ -7,6 +7,7 @@
 
     var store = new Ext.data.Store({
         model: 'Repo',
+        sorters: 'name',
         proxy: {
             type: 'scripttag',
             autoLoad: false,
@@ -90,4 +91,4 @@
             new Ext.Panel(main_panel);
         }
     });
-/*})(Ext);*/
+})(Ext);
