@@ -1,0 +1,4 @@
+.repo { text-shadow: 0 1px 0 white}
+.x-item-selected .repo { text-shadow: 0 1px 0 black}
+.repo h1 { font-weight:bold; }
+.repo p { font-size:smaller; font-weight:normal }
