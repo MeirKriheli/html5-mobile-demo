@@ -14,17 +14,14 @@
     <h1 data-dojo-type="dojox.mobile.Heading">GitHub repo</h1>
 
     <div dojoType="dojox.mobile.RoundRect" data-dojo-props="shadow:true">
-        <input data-dojo-type="dojox.mobile.TextBox" data-dojo-props='placeHolder:"GitHub username"'>
+        <input data-dojo-type="dojox.mobile.TextBox" id="username" data-dojo-props='placeHolder:"GitHub username"'>
         <button data-dojo-type="dojox.mobile.Button" data-dojo-props='label:"Submit"' id="submit-btn"></button>
     </div>
   </div>
 
   <div id="repos" data-dojo-type="dojox.mobile.View">
     <h1 data-dojo-type="dojox.mobile.Heading" back="Change user" moveTo="user-form">GitHub Repos</h1>
-    <ul data-dojo-type="dojox.mobile.RoundRectList">
-      <li data-dojo-type="dojox.mobile.ListItem" label="World"
-   icon="dojox/mobile/tests/images/i-icon-2.png"></li>
-    </ul>
+    <ul id="repos-list" data-dojo-type="dojox.mobile.RoundRectDataList"></ul>
   </div>
 </body>
 </html>
