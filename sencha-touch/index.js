@@ -33,6 +33,7 @@
     var user_form = {
         dockedItems: [{xtype:'toolbar', title:'GitHub'}],
         xtype: 'form',
+        id: "UserForm",
         items: [{
             xtype: 'fieldset',
             scroll: 'vertical',
@@ -50,7 +51,10 @@
         },
         {
             xtype: 'button',
-            text: 'Submit'
+            text: 'Submit',
+            handler: function() {
+                Ext.getCmp('UserForm').submit();
+            }
         }],
         listeners: {
             beforesubmit: function(form, values, options) {
