@@ -18,13 +18,18 @@
         }
     });
 
-    var repo_panel = new Ext.List({
+    var repo_list = new Ext.List({
         id: 'RepoPanel',
         layout: 'fit',
         store: store,
-        itemTpl: '<div class="repo"><h1>{name}</h1><p>{description}</p></div>'
+        itemTpl: '<div class="repo"><h1>{name}</h1><p>{description}</p></div>',
     });
 
+    var repo_panel = {
+        dockedItems: [{xtype:'toolbar', title:'Repos'}],
+        layout: 'fit',
+        items: [repo_list]
+    }
     var user_form = {
         dockedItems: [{xtype:'toolbar', title:'GitHub'}],
         xtype: 'form',
@@ -52,7 +57,7 @@
                 Ext.getCmp('MainPanel').setActiveItem(1);
                 store.getProxy().url = Ext.util.Format.format('https://api.github.com/users/{0}/repos', values.name);
                 store.load();
-                repo_panel.refresh();
+                repo_list.refresh();
                 return false;
             }
         }
