@@ -22,14 +22,24 @@
         id: 'RepoPanel',
         layout: 'fit',
         store: store,
-        itemTpl: '<div class="repo"><h1>{name}</h1><p>{description}</p></div>',
+        itemTpl: '<div class="repo"><h1>{name}</h1><p>{description}</p></div>'
     });
 
     var repo_panel = {
-        dockedItems: [{xtype:'toolbar', title:'Repos'}],
+        dockedItems: [{
+            xtype:'toolbar',
+            title:'Repos',
+            items: [{
+                text:'Select user',
+                handler: function() {
+                    Ext.getCmp('MainPanel').setActiveItem(0);
+                }
+            }]
+        }],
         layout: 'fit',
         items: [repo_list]
     }
+
     var user_form = {
         dockedItems: [{xtype:'toolbar', title:'GitHub'}],
         xtype: 'form',
