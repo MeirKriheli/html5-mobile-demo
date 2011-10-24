@@ -1,4 +1,7 @@
-.repo { text-shadow: 0 1px 0 white}
+.repo { text-shadow: 0 1px 0 white; position:relative}
 .x-item-selected .repo { text-shadow: 0 1px 0 black}
 .repo h1 { font-weight:bold; }
 .repo p { font-size:smaller; font-weight:normal }
+.repo .pushed { position:absolute; top:0; right:0; display:block; font-size:0.6em !important }
+.repo .issues { position:absolute; bottom:0; right:0; display:block; 
+    font-size:0.6em !important; border:1px solid #888; border-radius:5px; padding:1px 4px }

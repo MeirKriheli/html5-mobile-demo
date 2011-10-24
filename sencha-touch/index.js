@@ -22,7 +22,7 @@
         id: 'RepoPanel',
         layout: 'fit',
         store: store,
-        itemTpl: '<div class="repo"><h1>{name}</h1><p>{description}</p></div>'
+        itemTpl: '<div class="repo"><h1>{name}</h1><p>{description}</p><span class="pushed">{pushed_at}</span><span class="issues">{open_issues} issues</span></div>'
     });
 
     var repo_panel = {
